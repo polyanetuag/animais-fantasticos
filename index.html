@@ -6,21 +6,39 @@
     <title>Animais Fantásticos</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display+SC&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css"/>
+    
+    <link rel="stylesheet" href="./css/style.css">
+    <script>
+      document.documentElement.className += ' js';       // inserindo uma classe com JS
+
+    </script>
   </head>
   <body>
-    <nav class="menu">
-      <ul>
+    <div class="grid-container">
+
+    <nav class="menu" data-menu="suave">
+      <button data-menu="button" aria-expanded="false" aria-controls="menu">Menu</button>
+      <ul data-menu="list" id="menu">
         <li><a href="#Animais">Animais</a></li>
+        <li data-dropdown>
+          <a href="sobre.html">Sobre</a>
+          <ul class="dropdown-menu"> 
+            <li><a href="empresa.html">A empresa</a></li>
+            <li><a href="equipe.html">Equipe</a></li>
+            <li><a href="socios.html">Sócios</a></li>
+            <li><a href="Investidores.html">Investidores</a></li>
+          </ul>
+        </li>
+
         <li><a href="#faq">FAQ</a></li>
         <li><a href="#Contato">Contato</a></li>
-        <li><a href="#github.com/polyanetuag">Dev→</a></li>
+        <li><a  data-modal="abrir" href="Login.html">Login→</a></li>
       </ul>
     </nav>
 
-    <section class="grid-section animais" id="animais ">
+    <section class="grid-section animais" data-anime="scroll" id="animais ">
       <h1 class="titulo">Animais Fantásticos</h1>
-      <ul class="animais-lista">
+      <ul class="animais-lista" data-tab="menu">
         <li>
           <img src="assets/abelha.jpg" alt="Abelha" />
         </li>
@@ -50,7 +68,7 @@
         </li>
       </ul>
 
-      <div class="animais-descricao">
+      <div class="animais-descricao" data-tab="content">
         <section>
           <h2>Abelha</h2>
           <p>
@@ -71,7 +89,7 @@
             presença das abelhas melíferas.
           </p>
         </section>
-        <section>
+        <section data-anime="show-down">
           <h2>Beija-Flor</h2>
           <p>
             Os beija-flores são aves de pequeno porte, que medem em média de 6 a
@@ -93,7 +111,7 @@
             média, 12 anos e seu tempo de incubação é de 13 a 15 dias.
           </p>
         </section>
-        <section>
+        <section data-anime="show-right">
           <h2>Coruja das Neves</h2>
           <p>
             A coruja-das-neves mede entre 53 e 65 cm de comprimento, com uma
@@ -288,9 +306,9 @@
       </div>
     </section>
 
-    <section class="grid-section faq" id="faq">
+    <section class="grid-section faq" data-anime="scroll"  id="faq">
       <h1 class="titulo">FAQ</h1>
-      <dl class="faq-lista">
+      <dl class="faq-lista" data-anime="accordion" >
         <dt>Qual a idade dos animais?</dt>
         <dd>
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ex aperiam
@@ -325,9 +343,14 @@
       </dl>
     </section>
 
-    <section class="grid-section contato" id="contato">
+    <section class="grid-section numeros" data-anime="scroll">
+      <h1 class="titulo">Números</h1>
+      <div class="numeros-grid"> <!--puxado via api fetch animais-->  </div>
+    </section>
+
+    <section class="grid-section contato" data-anime="scroll"  id="contato">
       <h1 class="titulo">Contato</h1>
-      <div class="mapa">
+      <div class="mapa" data-tooltip aria-label="Endereço próximo ao estacionamento.">
         <img src="assets/mapa.png" alt="Mapa" />
       </div>
       <ul class="dados">
@@ -335,13 +358,33 @@
         <li>+55 (27) 99999-9999</li>
         <li>Rua javaScript, nº 60</li>
         <li>Vila Velha - ES</li>
+        <li>Doe <span class="btc-preco">0</span> bitcoin para nos ajudar</li>
+        <li data-semana="1,2,3,4,5,6" data-horario="8,20">Seg à Sex das 8 às 18</li>
       </ul>
     </section>
 
     <footer class="copy">
       <p>Todos os direitos reservados.</p>
     </footer>
+  </div>
 
-    <script src="script.js"></script>
+    <section class="modal-container" data-modal="container">
+      <div class="modal">
+        <button data-modal="fechar" class="fechar">X</button>
+
+        <form action="">
+          <label for="email">Email</label>
+          <input type="text" for="email" id="email">
+
+          <label for="senha">Senha</label>
+          <input type="password" for="senha" id="senha">
+
+          <button type="submit">Entrar</button>
+
+        </form>
+      </div>
+    </section>
+
+    <script src="main.js/main.js"></script>
   </body>
 </html>
