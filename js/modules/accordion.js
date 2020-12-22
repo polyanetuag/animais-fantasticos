@@ -1,20 +1,34 @@
 // ================= ACORDION LIST ================ outro tipo de navegação
-export default function initAccordion() {
-  const accordionList = document.querySelectorAll('[data-anime="accordion"] dt');
-  const activeClass = 'ativo';
-
-  function activeAccordion() {
-    this.classList.toggle(activeClass);
-    // eslint-disable-next-line max-len
-    this.nextElementSibling.classList.toggle(activeClass);// o this faz referencia ao item que está sendo selecionado
+export default class Accordion {
+  constructor(list) {
+    this.accordionList = document.querySelectorAll(list);
+    this.activeClass = 'ativo';
   }
-  if (accordionList.length) { // verificar se existe
-    accordionList[0].classList.add(activeClass); // começar o primeiro item aberto
-    accordionList[0].nextElementSibling.classList.add(activeClass);
 
-    accordionList.forEach((item) => {
-      item.addEventListener('click', activeAccordion);
+  activeAccordion() {
+    this.classList.toggle(this.activeClass);
+    this.nextElementSibling.classList.toggle(this.activeClass);// o this faz referencia ao item que está sendo selecionado
+  }
+
+  toggleAccordion(item) {
+    item.classList.toggle(this.activeClass);
+    item.nextElementSibling.classList.toggle(this.activeClass);
+  }
+
+  //adiciona os eventos ao accordion
+  addAccordionEvent() {
+    this.accordionList.forEach((item) => {
+      item.addEventListener('click', () => this.toggleAccordion(item));
     });
   }
+
+  // iniciar função
+  init() {
+    if (this.accordionList.length) {
+      // ativar primeiro item 
+      this.toggleAccordion(this.accordionList[0]);
+      this.addAccordionEvent();
+    }
+  }
 }
-console.log('teste');
+
