@@ -11,7 +11,7 @@ export default class Funcionamento {
   }
   
   dadosAgora() {
-     this.dataAgora = new Date();
+     const dataAgora = new Date();
      this.diaAgora = dataAgora.getDay();
      this.horarioAgora = dataAgora.getUTCHours() - 3;
 
