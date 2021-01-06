@@ -16,7 +16,6 @@ export class Slide {
 
   // movimento do slide
   moveSlide(distX) {
-    console.log(distX)
     this.dist.movePosition = distX;
     this.slide.style.transform = `translate3d(${distX}px, 0, 0)`;
   }
@@ -168,7 +167,7 @@ export class Slide {
   }
 }
 
-export class SlideNav extends Slide {
+export default class SlideNav extends Slide {
   constructor(slide, wrapper) {
     super(slide, wrapper)
     this.bindControlEvents();
